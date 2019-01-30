@@ -20,7 +20,6 @@ class TransalatorManager {
             $searchText = '',
             $consonants = ['b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'p', 'q', 'r', 's', 't', 'v', 'w', 'x', 'z'],
             $vowels = ['a', 'e', 'i', 'o', 'u', 'y'],
-            $foundConstants = [],
             $additional = 'ay';
 
 
@@ -29,11 +28,9 @@ class TransalatorManager {
     }
 
     public function getText(){
-
         if($this->translateOperation($this->transalateText)){
             $this->saveOperation();
         }
-
         return $this->transalateText;
     }
 
@@ -75,7 +72,12 @@ class TransalatorManager {
             }
 
         }
-        return true;
+        if(!Validators::isNone($this->searchText)){
+            return true;
+        }else{
+            return false;
+        }
+
     }
 
 
